@@ -12,10 +12,12 @@ cors = CORS(app)
 @app.route('/detect', methods=['POST', 'OPTIONS'])
 @cross_origin()
 def predict():
-    image = request.files['file']
-    image.save('image.jpg')
+    # possible inputs: "dog_car.jpeg","dog_cat.jpg","horse_truck.png","plane_bird.webp"
 
-    dictionaryOfresults = detector('image.jpg')
+    # read key "id" from request body
+    id = request.json['id']
+
+    dictionaryOfresults = detector("images/" + id)
     return jsonify({'message': 'success', 'results': dictionaryOfresults})
 
 
