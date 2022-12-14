@@ -17,5 +17,5 @@ def detector(imagePath):
     for i in range(10):
         results[number_to_class[index[9 - i]]
                 ] = str(probabilities[0, index[9 - i]])
-
+    print(results)
     return results
